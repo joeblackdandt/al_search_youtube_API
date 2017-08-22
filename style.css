@@ -1,0 +1,58 @@
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+
+
+
+#search-container{
+  margin: 40px auto;
+  /*padding:3em 0 0;*/
+  text-align:center;
+  
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%,-50%);*/
+}
+#searchform{
+  display:inline;
+  /*font-size:1em;*/
+  font-size:30px;
+  border-radius: 8em;
+  border:0.1em solid rgba(218,208,190,1);
+  box-shadow:0 0 0.3em rgba(60,60,60,0.4);
+  padding:0.3em;
+  background:white;
+}
+#s{
+  transition:all 0.2s ease-out;
+  width:1px;
+  border-radius:0;
+  box-shadow:none;
+  outline: none;
+  padding:0;
+  margin:0;
+  border:0;
+  background-color: transparent;
+  opacity:0;
+  font-size:30px;
+}
+#s:focus{
+  width:calc(100% - 100px);
+  opacity:1;
+}
+label{
+  padding-left: 1px;
+  display:inline-block;
+  margin-top:0.3em;
+  color:rgba(218,208,190,1);
+  text-shadow:0 0 0.1em rgba(60,60,60,0.3);
+  position: relative;
+  left:0.1em;
+}
+
+body{
+  padding-top:20px;
+}
+
+img.media-object{
+  max-width: 100px;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Youtube Search </title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="shortcut icon" type="image/png" href="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/youtube_circle-512.png"/>
+        
+    </head>
+    <body onload = "googleApiClientReady();">
+        
+        <!--login link and status-->
+        <div class="container text-center">
+            <div class="pre-auth"><span class='icon-cog icon-spin icon-4x text-info'></span></div>
+            <div class="post-auth" style="display:none;"><span class="label label-success">CONNECTED</span></div>
+            <a id="login-link" class="pre-auth text-danger" style='display:none' href="#"><strong>LOGIN</strong></a>
+        </div>
+        
+        
+        
+        <!--This is the search input-->
+        <div class="container post-auth" style='display:none' id="search-container">
+            <div role="search" method="get" id="searchform" action="">
+              <label for="s">
+                <i class="icon-search"></i>
+              </label>
+              <input type="text" value="" placeholder="search" class="" id="s" disabled />
+            </div>
+        </div>
+        
+        <hr>
+        
+        
+        <!--Player and results-->
+        <div class='container'>
+            <div class='row'>
+                <!--player-->
+                <div id="player-container" class='col-sm-8 col-xs-12'>
+                    <div id="player" class="hidden" style="width:100%;"></div>
+                    <p class="video-controls hidden">
+                        <button class="play-button btn btn-lg btn-success hidden" onclick="playVideo();"><i class='icon-play'></i></button>
+                        <button class="pause-button btn btn-lg btn-warning" onclick="pauseVideo();"><i class='icon-pause'></i></button>
+                        <button class="stop-button btn btn-lg btn-danger" onclick="stopVideo();"><i class='icon-stop'></i></button>
+                    </p>
+                </div>
+                
+                <!--results position-->
+                <div id="search-results-container" class='col-sm-4 col-xs-12'></div>
+            </div>
+        </div>
+        
+        
+        
+        <!--these are the scripts we need-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="https://apis.google.com/js/client.js"></script>
+        <script type="text/javascript" src="oauth.js"></script>
+        
+        
+        <script>
+              // 2. This code loads the IFrame Player API code asynchronously.
+              var tag = document.createElement('script');
+        
+              tag.src = "https://www.youtube.com/iframe_api";
+              var firstScriptTag = document.getElementsByTagName('script')[0];
+              firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+              // 3. This function creates an <iframe> (and YouTube player)
+              //    after the API code downloads.
+              var player;
+              function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                  height: '390',
+                  width: '640',
+                  videoId: '',
+                  playerVars: {'controls': 0 },
+                  events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                  }
+                });
+              }
+        
+              // 4. The API will call this function when the video player is ready.
+              function onPlayerReady(event) {
+                // event.target.playVideo();
+              }
+        
+              // 5. The API calls this function when the player's state changes.
+              //    The function indicates that when playing a video (state=1),
+              //    the player should play for six seconds and then stop.
+              var done = false;
+              function onPlayerStateChange(event) {
+                // if (event.data == YT.PlayerState.PLAYING && !done) {
+                //   setTimeout(stopVideo, 6000);
+                //   done = true;
+                // }
+              }
+              
+    </script>
+    </body>
+</html>
